@@ -30,7 +30,6 @@ typedef struct node_
     char node_name[MAX_NODE_NAME_SIZE];
     interface_t* interf[MAX_INTERFACE_SIZE];
      
-
 }node_t;
 
 
@@ -45,7 +44,7 @@ graph_t* create_new_graph(char* graph_name);
 
 node_t* create_new_node(char* node_name, graph_t* graph);
 
-void insert_link_between_two_nodes(node_t* node1, node_t* node2, interface_t* intf1, interface_t* intf2, int cost);
+link_t* insert_link_between_two_nodes(node_t* node1, node_t* node2, int intf1, int intf2, int cost);
 
-
+void initialise_interface(node_t* node);
 #endif  // __GRAPH__
