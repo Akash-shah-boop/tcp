@@ -47,4 +47,11 @@ node_t* create_new_node(char* node_name, graph_t* graph);
 link_t* insert_link_between_two_nodes(node_t* node1, node_t* node2, int intf1, int intf2, int cost);
 
 void initialise_interface(node_t* node);
+
+interface_t* get_node_interface_by_name(node_t* node, char* s);
+
+node_t* get_node_from_graph_by_node_name(graph_t* graph, char* name);
+
+
+
 #endif  // __GRAPH__

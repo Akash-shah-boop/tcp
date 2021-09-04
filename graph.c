@@ -93,6 +93,45 @@ int get_node_interface_empty_slot(node_t* node)
   else
   return i;
 }
+
+/*
+ *Name: get_node_interface_by_name
+  Function: gives interface with node and name
+ * */
+interface_t* get_node_interface_by_name(node_t* node, char* s)
+{
+  
+    interface_t* intf = (interface_t*)node->interf;
+    int i = 0;
+    int found = 0;
+    while(i<=MAX_INTERFACE_SIZE)
+    {
+    if(strncmp(intf[i].interface_name,s,MAX_INTERFACE_NAME_SIZE) == 0)
+      {
+      return &intf[i];
+      }
+    i++;
+    }
+    return NULL;
+
+}
+
+node_t* get_node_from_graph_by_node_name(graph_t* graph, char* name)
+{
+    dll_node_t* head = graph->node_list.head;
+    while(head!= NULL)
+       {
+       if(strncmp(((node_t*)(head->data))->node_name,name,MAX_NODE_NAME_SIZE) == 0)
+       {
+
+       return ((node_t*)(head->data));
+       }
+       head = head->right;
+       }
+    return NULL;
+
+}
+
 int main()
 {
 
@@ -116,10 +155,14 @@ printf("\n[%s %s %d]",i[a].interface_name, i[a].node->node_name, i[a].link?i[a].
 head = head->right;
 printf("\n");
 }
+//printf("%s",get_node_from_graph_by_node_name(graph, "node3")->node_name);
+//printf("%s",get_node_from_graph_by_node_name(graph, "node2")->node_name);
+
 
 //
-printf("%d",get_node_interface_empty_slot(node1));
-printf("%d",get_node_interface_empty_slot(node2));
+//printf("%d",get_node_interface_empty_slot(node1));
+//printf("%d",get_node_interface_empty_slot(node2));
+
 return 0;
 }
 
